@@ -7,7 +7,7 @@ function Subscription({ setShowSubscription, setButton, setShowSub }) {
     const [inputValue, setInputVAlue] = useState("")
 
     const handleClick = () => {
-        
+
         if (inputValue.includes('@') && inputValue.includes('.')) {
 
             fetch("https://demoapi.com/api/series/newsletter", {
@@ -21,6 +21,17 @@ function Subscription({ setShowSubscription, setButton, setShowSub }) {
                 .then(data => {
                     console.log(data)
                 })
+            setShowSubscription(false)
+            setButton(true)
+            setTimeout(() => {
+                setButton(false)
+                setShowSub(true)
+                setTimeout(() => {
+                    setShowSub(false)
+                }, 5000)
+            }, 5000)
+
+
         }
 
     }
@@ -32,15 +43,6 @@ function Subscription({ setShowSubscription, setButton, setShowSub }) {
             <input type="text" placeholder="email..." onChange={(event) => { setInputVAlue(event.target.value) }} />
             <button onClick={() => {
                 handleClick()
-                setShowSubscription(false)
-                setButton(true)
-                setTimeout(() => {
-                    setButton(false)
-                    setShowSub(true)
-                    setTimeout(() => {
-                        setShowSub(false)
-                    },5000)
-                },5000)
             }}>SEND</button>
         </>
 

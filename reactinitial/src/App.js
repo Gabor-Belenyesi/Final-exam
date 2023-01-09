@@ -37,7 +37,12 @@ const App = () => {
 
       {arr.length > 0 ? <Characters persons={arr} /> : <LoadingMask />}
       {showSubscription ? <Subscription setShowSubscription={setShowSubscription} setButton={setButton} setShowSub={setShowSub}/> : null}
-      {button ? <LoadingMask /> : null}
+      {button ? 
+      <>
+      <h2>Subscribe to our newsletter</h2>
+      <LoadingMask /> 
+      </>
+      : null}
       {showSub ? <h2>Subscribed!</h2> : null}
     </>
   )
